@@ -6,16 +6,17 @@ import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 export default function Dashboard({ auth }) {
     const [entityValues, setEntityValues] = useState({
-        name: "products",
+        name: "posts",
         storage_engine: "InnoDB",
         collation: "utf8_general_ci",
         table_comments: "test comments for table products",
     });
     const [columnValues, setColumnValues] = useState([
-        { name: "id", type: "int",auto_increment:true },
-        { name: "title", type: "string" },
-        { name: "price", type: "decimal" },
-        { name: "description", type: "text" },
+        { name: "id", type: "BIGINT",auto_increment:true },
+        { name: "title", type: "VARCHAR" },
+        { name: "price", type: "DECIMAL" },
+        { name: "description", type: "VARCHAR" },
+        { name: "content", type: "TEXT" },
     ]);
     const [relationValues, setRelationValues] = useState([
         { primary_key: "id", foreign_key: "product",main_table_id:"2",reference_table_id:"3" },

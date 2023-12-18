@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,5 +23,12 @@ class EntityModel extends Model
     public function relations()
     {
         return $this->hasMany(RelationModel::class,"main_table_id");
+    }
+
+    protected static function booted()
+    {
+        static::addGlobalScope('relation', function (Builder $builder) {
+            $builder->with("columns")->with("relations");
+        });
     }
 }
