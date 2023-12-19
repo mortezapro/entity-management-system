@@ -64,7 +64,7 @@ class CreateHttpRequest
         ];
     }
 
-    public function getRequestStub()
+    public function getRequestStub() :string
     {
         return base_path(). '/stubs/request.entity.stub';
     }
